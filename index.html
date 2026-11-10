@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Signal Lost: Extinction Run — 3D Chrome Dino</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <canvas id="game-canvas"></canvas>
+
+    <!-- HUD Layer -->
+    <div id="ui-layer">
+      <!-- Top Bar -->
+      <header id="hud-top">
+        <div class="hud-left">
+          <div class="badge-row">
+            <span id="act-badge">ACT I · THE MONOCHROME BADLANDS</span>
+            <span id="chrono-pill">AMBER CHRONO: 0/3</span>
+          </div>
+          <div class="quick-toggles">
+            <button id="cam-btn" type="button" title="Switch Camera Angle (C)">[C] CAM: 3D CHASE</button>
+            <button id="mute-btn" type="button" title="Toggle Sound (M)">[M] SFX: ON</button>
+            <button id="pause-btn" type="button" title="Pause Game (P)">[P] PAUSE</button>
+          </div>
+        </div>
+        <div class="score-cluster" aria-live="polite">
+          <span id="hi-score">HI 00000</span>
+          <span id="current-score">00000</span>
+        </div>
+      </header>
+
+      <!-- Wi-Fi Reconnecting Meta-Boss Bar -->
+      <div id="wifi-boss-bar" class="hidden">
+        <div class="wifi-bar-header">
+          <span id="wifi-boss-text">WI-FI SIGNAL DETECTED — RECONNECTING 12%</span>
+          <span id="wifi-relay-count">JAM RELAYS [0/3]</span>
+        </div>
+        <div class="wifi-progress-track">
+          <div id="wifi-progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Story Act Toast -->
+      <div id="act-toast" role="status">
+        <div id="act-toast-title">ACT I · THE MONOCHROME BADLANDS</div>
+        <div id="act-toast-sub">Jump cacti &amp; switch lanes</div>
+      </div>
+
+      <!-- Time-Rewind Banner -->
+      <div id="rewind-banner" class="hidden">
+        <div class="rewind-title">&#9664;&#9664; AMBER CHRONO-REWIND</div>
+        <div class="rewind-sub">Reversing timeline 2.0s &mdash; Second chance granted!</div>
+      </div>
+
+      <!-- Floating Bonus Popups -->
+      <div id="bonus-layer"></div>
+
+      <!-- Chrome Offline Prologue Card -->
+      <section id="prologue-card">
+        <h1>No internet</h1>
+        <p class="offline-lead">Try:</p>
+        <ul>
+          <li>Pressing <kbd>SPACE</kbd> or <kbd>↑</kbd> to wake the Dino into 3D &amp; race your Crowned Ghost</li>
+          <li>Dodging across 3 lanes with <kbd>A</kbd> / <kbd>D</kbd> &amp; ducking with <kbd>S</kbd> / <kbd>↓</kbd></li>
+          <li>Smashing boulders &amp; jamming Wi-Fi Relays with <kbd>SHIFT</kbd> Roar-Dash</li>
+          <li>Collecting 3 Amber for <strong>Time-Rewind</strong> &amp; pressing <kbd>R</kbd> for <strong>Mega-Rex</strong>!</li>
+        </ul>
+        <div class="error-code">ERR_INTERNET_DISCONNECTED · SIGNAL_LOST_EXTINCTION_RUN</div>
+        <div class="start-prompt">PRESS <kbd>SPACE</kbd> OR TAP TO RUN</div>
+      </section>
+
+      <!-- Pause Banner -->
+      <div id="pause-banner" class="hidden">
+        <h2>PAUSED</h2>
+        <p>Press <kbd>P</kbd> or <kbd>ESC</kbd> to resume</p>
+      </div>
+
+      <!-- Game Over Overlay -->
+      <section id="gameover-card" class="hidden">
+        <div class="gameover-title">G A M E &nbsp; O V E R</div>
+        <button id="restart-btn" type="button" aria-label="Play Again" title="Restart (Space)">
+          <svg viewBox="0 0 24 24" width="28" height="28" fill="currentColor">
+            <path d="M12 5V1L7 6l5 5V7c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6H4c0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8z"/>
+          </svg>
+        </button>
+        <div class="stats-grid">
+          <div><span>SCORE</span><strong id="final-score">00000</strong></div>
+          <div><span>BEST</span><strong id="final-best">00000</strong></div>
+          <div><span>ERA REACHED</span><strong id="final-act">Act 1</strong></div>
+        </div>
+        <div id="final-combo" class="combo-line">0 Smashes · 0 Near-Misses</div>
+        <div class="restart-hint">Press <kbd>SPACE</kbd> or Tap Button to Run Again</div>
+      </section>
+
+      <!-- Bottom Dual Ability Bar (Roar-Dash + Mega-Rex Rage) -->
+      <footer id="ability-bar">
+        <button id="dash-btn" class="ability-pill ready" type="button">
+          <div class="ability-bar-track">
+            <div id="dash-bar-fill"></div>
+          </div>
+          <span id="dash-bar-label">ROAR-DASH READY [SHIFT]</span>
+        </button>
+
+        <button id="mega-btn" class="ability-pill" type="button">
+          <div class="ability-bar-track">
+            <div id="mega-bar-fill"></div>
+          </div>
+          <span id="mega-bar-label">EXTINCTION RAGE 0% [R]</span>
+        </button>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

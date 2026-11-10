@@ -1,0 +1,23 @@
+{
+  "name": "dino-3d-runner",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "3D Chrome Dino Platformer-Runner — Signal Lost: Extinction Run",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "three": "^0.170.0"
+  },
+  "devDependencies": {
+    "@types/three": "^0.170.0",
+    "typescript": "^5.6.3",
+    "vite": "^6.0.0",
+    "vitest": "^2.1.8"
+  }
+}
